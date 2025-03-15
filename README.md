@@ -13,9 +13,13 @@ Tietokannat ja web-ohjelmointi kurssin harjoitustyö
 
 * Sovelluksessa on käyttäjäsivut, jotka näyttävät jokaisesta käyttäjästä tilastoja (kellotusten määrä, kellotuksiin kulunut yhteenlaskettu aika ja jotain muuta nippelitietoa (esim. käyttäjän juoduin juoma))
 
-* Käyttäjä pystyy valitsemaan kellotukselle yhden tai useamman luokittelun. (aika, juoman tyyppi, juoman alkoholi pitoisuus, juoman määrä, hiilihapot)
+* Käyttäjä pystyy valitsemaan kellotukselle yhden tai useamman luokittelun. (aika, juoman tyyppi, juoman alkoholi pitoisuus, juoman määrä, hiilihapot, arvostelu)
 
 * Käyttäjät pystyvät vertailemaan kellotuksia toisten käyttäjien kellotuksiin tulostaulukon avulla (järjestystä voi muuttaa esim. ajan, juoman määrän ja alkoholi pitoisuuden perusteella)
+
+* Käyttäjä pystyy lisämään videon suorituksesta
+
+* Käyttäjä voi saada erilaisia saavutuksia ja "arvonimiä", joita voi esitellä profiilissa
   
 
 ## Mikä ihmeen kellotus?
