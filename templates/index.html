@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Kellotuksemme</title>
+</head>
+
+<body>
+    <h1>Kellotuksem.me</h1>
+
+  {% if session.username %}
+  <p>
+    Olet kirjautunut nimellä {{ session.username }}
+  </p>
+  {% endif %}
+
+  <p>
+    <a href="/login">Kirjaudu sisään </a>
+    <a href="/register">luotunnus </a>
+    <a href="/logout">Kirjaudu ulos</a>
+  </p>
+</body>
+
+</html>
