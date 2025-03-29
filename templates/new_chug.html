@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Uusi kellotus</title>
+</head>
+
+<body>
+    <h1>Uusi kellotus</h1>
+  <form action="/create_chug" method="post">
+    <p>
+      Juoma: <br />
+      <input type="text" name="drink" required/>
+    </p>
+    <p>
+    Aika: <br />
+    <input type="text" id="minutes" class="time-input" name="minutes" pattern="^[0-9]{1,2}$" placeholder="minuutit" size="6" required>min :
+    <input type="text" id="seconds" class="time-input" name="seconds" pattern="^[0-9]{2}$" placeholder="sekunnit" size="6" required>s :
+    <input type="text" id="milliseconds" class="time-input" name="milliseconds" pattern="^[0-9]{3}$" placeholder="millisekunnit" size="6" required>ms
+    </p>
+    <p>
+    Määrä (cl) esim. tölkki 33: <br />
+    <input type="number" name="amount" step="0.1" size="5" required/>cl
+    </p>
+    <p>
+    Alkoholipitoisuus (%) esim. 5,5: <br />
+    <input type="number" name="alcohollevel" step="0.1" size="5" required/>%
+    </p>
+    <p>
+    Hiilihappoja?: <br />
+    <input type="checkbox" name="carbonation" required/>
+    </p>
+    <input type="submit" value="Lisää kellottus" />
+  </form>
+</body>
+
+</html>
