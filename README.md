@@ -25,13 +25,6 @@ Tietokannat ja web-ohjelmointi kurssin harjoitustyö
 
 * Käyttäjä pystyy luomaan tunnuksen ja kirjautumaan sisään sovellukseen.
 
-* Käyttäjä pystyy lisäämään sovellukseen kellotuksia. Lisäksi käyttäjä pystyy muokkaamaan ja poistamaan lisäämiään kellotuksia.
-
-* Käyttäjä näkee sovellukseen lisätyt kellotukset. Käyttäjä näkee sekä itse lisäämänsä että muiden käyttäjien lisäämät kellotukset.
-
-* Käyttäjä pystyy etsimään kellotuksia hakusanalla tai muulla perusteella. Käyttäjä pystyy hakemaan sekä itse lisäämiään että muiden käyttäjien lisäämiä tietokohteita.
-
-  
 
 ## Mikä ihmeen kellotus?
 Kellotuksella tarkoitetaan juoman juomista yleensä mahdollisimman nopeasti samalla kun suorituksesta otetaan aikaa.
