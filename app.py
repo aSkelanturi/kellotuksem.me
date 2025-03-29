@@ -8,12 +8,11 @@ import config
 app = Flask(__name__)
 app.secret_key = config.secret_key
 
-
+#Front page
 @app.route("/")
 def index():
     return render_template("index.html")
-
-
+# Registering page
 @app.route("/register")
 def register():
     return render_template("register.html")
@@ -35,7 +34,7 @@ def create():
 
     return "Tunnus luotu"
 
-
+#Login page
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
@@ -53,6 +52,7 @@ def login():
         else:
             return "VIRHE: väärä tunnus tai salasana"
 
+#Logut page
 @app.route("/logout")
 def logout():
     del session["username"]
