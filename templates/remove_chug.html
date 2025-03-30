@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Poista kellotus</title>
+</head>
+
+<body>
+    <h1>Poista kellotus</h1>
+    <p>Kellotus: {{ chug.drink }}</p>
+    <p>Haluatko varmasti poistaa tämän kellotuksen?</p>
+  <form action="/remove_chug/{{ chug.id }}" method="post">
+    <input type ="submit" name="remove" value="Poista ilmoitus">
+    <input type ="submit" name="back" value="Takaisin kellotukseen">
+  </form>
+  <p>
+    <a href="/chug/{{ chug.id }}">"Takaisin ilmoitukseen"</a>
+  </p>
+</body>
+
+</html>
