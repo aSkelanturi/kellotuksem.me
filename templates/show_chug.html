@@ -10,6 +10,7 @@
     {% if session.user_id == chug.user_id %}
     <p>
         <a href ="/edit_chug/{{ chug.id }}">Muokkaa</a>
+        <a href ="/remove_chug/{{ chug.id }}">Poista</a>
     </p>
     {% endif %}
     Kellottaja:

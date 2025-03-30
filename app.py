@@ -76,6 +76,19 @@ def update_chug():
 
     return redirect("/chug/" + str(chug_id))
 
+#chug deleting page
+@app.route("/remove_chug/<int:chug_id>", methods=["GET", "POST"])
+def remove_chug(chug_id):
+    if request.method == "GET":
+        chug = chugs.get_chug(chug_id)
+        return render_template("remove_chug.html", chug = chug)
+    if request.method == "POST":
+        if "remove" in request.form:
+            chugs.remove_chug(chug_id)
+            return redirect("/")
+        else:
+            return redirect("/chug/" + str(chug_id))
+        
 # Registering page
 @app.route("/register")
 def register():
