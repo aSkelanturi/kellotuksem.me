@@ -49,6 +49,33 @@ def create_chug():
 
     return redirect("/")
 
+#chug editing page
+@app.route("/edit_chug/<int:chug_id>")
+def edit_chug(chug_id):
+    chug = chugs.get_chug(chug_id)
+    return render_template("edit_chug.html", chug = chug)
+
+#update chug
+@app.route("/update_chug", methods=["POST"])
+def update_chug():
+    chug_id = request.form["chug_id"]
+    drink = request.form["drink"]
+    amount = request.form["amount"]
+    alcohollevel = request.form["alcohollevel"]
+    carbonation = "carbonation" in request.form
+    user_id = session["user_id"]
+
+        #Getting the time as milliseconds
+    minutes  = int(request.form.get("minutes",0))
+    seconds  = int(request.form.get("seconds",0))
+    milliseconds  = int(request.form.get("milliseconds",0))
+
+    total_time = (minutes * 60 * 1000) + (seconds * 1000) + milliseconds
+    
+    chugs.update_chug(chug_id, drink, total_time, amount, alcohollevel, carbonation)
+
+    return redirect("/chug/" + str(chug_id))
+
 # Registering page
 @app.route("/register")
 def register():

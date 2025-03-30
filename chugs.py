@@ -12,12 +12,25 @@ def get_chugs():
 
 def get_chug(chug_id):
     sql = """SELECT chugs.drink,
+                    chugs.id,
                     chugs.clock,
                     chugs.amount,
                     chugs.alcohol,
                     chugs.carbonation,
+                    users.id user_id,
                     users.username
              FROM chugs
              JOIN users ON chugs.user_id = users.id
              WHERE chugs.id = ?"""
     return db.query(sql, [chug_id])[0]
+
+def update_chug(chug_id, drink, total_time, amount, alcohollevel, carbonation):
+    sql = """UPDATE chugs 
+             SET drink = ?, 
+                 clock = ?, 
+                 amount = ?, 
+                 alcohol = ?, 
+                 carbonation = ? 
+             WHERE id = ?"""
+    db.execute(sql, [drink, total_time, amount, alcohollevel, carbonation, chug_id])
+
