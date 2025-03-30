@@ -12,7 +12,15 @@ app.secret_key = config.secret_key
 #Front page
 @app.route("/")
 def index():
-    return render_template("index.html")
+    all_chugs = chugs.get_chugs()
+    return render_template("index.html", chugs=all_chugs)
+
+#Chug info pages
+@app.route("/chug/<int:chug_id>")
+def show_chug(chug_id):
+    chug = chugs.get_chug(chug_id)
+    return render_template("show_chug.html", chug = chug)
+
 
 #Chug adding form
 @app.route("/new_chug")

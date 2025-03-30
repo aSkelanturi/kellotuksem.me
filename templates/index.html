@@ -23,6 +23,13 @@
 <p>
     <a href="/new_chug">Lisää kellottus</a>
 </p>
+
+<h2>Kellotukset</h2>
+<ul>
+{% for chug in chugs %}
+<li><a href="/chug/{{ chug.id }}">{{ chug.drink }}</a></li>
+{% endfor %}
+</ul>
 </body>
 
 </html>
