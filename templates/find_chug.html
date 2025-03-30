@@ -10,10 +10,22 @@
     
     <form action="/find_chug" method="get">
     <p>
-        Hakusana: <input type="text" name="query">
+        Hakusana: <input type="text" name="query" value="{{ query }}">
     </p>
     <input type="submit" value="Lähetä">
     </form>
+    <p>
+        <a href="/">Takaisin</a>
+    </p>
+    {% if query %}
+    <h2>Tulokset</h2>
+    
+    <ul>
+      {% for chug in results %}
+      <li><a href="/chug/{{ chug.id }}">{{ chug.drink }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
 </body>
 
 </html>

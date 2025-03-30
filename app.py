@@ -18,7 +18,13 @@ def index():
 #searching fucntion
 @app.route("/find_chug")
 def find_chug():
-    return render_template("find_chug.html")
+    query = request.args.get("query")
+    if query:
+        results = chugs.find_chugs(query)
+    else:
+        query = ""
+        results = []
+    return render_template("find_chug.html", query=query, results=results)
 
 #Chug info pages
 @app.route("/chug/<int:chug_id>")

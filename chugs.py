@@ -38,3 +38,10 @@ def remove_chug(chug_id):
     sql = "DELETE FROM chugs WHERE id = ?"
     db.execute(sql, [chug_id])
 
+def find_chugs(query):
+    sql = """SELECT id, drink
+            FROM chugs
+            WHERE drink LIKE ?
+            ORDER BY id DESC"""
+    return db.query(sql, ["%" + query + "%"])
+
