@@ -10,5 +10,6 @@ CREATE TABLE chugs (
     clock TIME,
     amount INTEGER,
     alcohol INTEGER,
-    user_id INTEGER REFRENCES users
+    carbonation TEXT,
+    user_id INTEGER REFERENCES users
 );

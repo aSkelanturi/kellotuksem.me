@@ -21,6 +21,23 @@ def new_chug():
 #Adding chugs
 @app.route("/create_chug", methods=["POST"])
 def create_chug():
+    drink = request.form["drink"]
+    amount = request.form["amount"]
+    alcohollevel = request.form["alcohollevel"]
+    carbonation = "carbonation" in request.form
+    user_id = session["user_id"]
+
+    #Getting the time as milliseconds
+    minutes  = int(request.form.get("minutes",0))
+    seconds  = int(request.form.get("seconds",0))
+    milliseconds  = int(request.form.get("milliseconds",0))
+
+    total_time = (minutes * 60 * 1000) + (seconds * 1000) + milliseconds
+    
+    sql = """INSERT INTO chugs (drink, clock, amount, alcohol, carbonation, user_id)
+            VALUES (?, ?, ?, ?, ?, ?)"""
+    db.execute(sql, [drink, total_time, amount, alcohollevel, carbonation, user_id])
+    return redirect("/")
 
 # Registering page
 @app.route("/register")
@@ -49,21 +66,26 @@ def create():
 def login():
     if request.method == "GET":
         return render_template("login.html")
+    
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
         
         sql = "SELECT id, password_hash FROM users WHERE username = ?"
-        result = db.query(sql, [username])[0]
-        user_id = result["id"]
-        password_hash = result["pasword_hash"]
+        result = db.query(sql, [username])
+        
+        if not result:
+            return "VIRHE: väärä tunnus tai salasana"
+        
+        user_id = result[0]["id"]
+        password_hash = result[0]["password_hash"]
+        
         if check_password_hash(password_hash, password):
             session["user_id"] = user_id
             session["username"] = username
             return redirect("/")
         else:
             return "VIRHE: väärä tunnus tai salasana"
-
 #Logut page
 @app.route("/logout")
 def logout():
