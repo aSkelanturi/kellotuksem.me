@@ -4,6 +4,7 @@ from flask import redirect, render_template, request, session
 from werkzeug.security import generate_password_hash, check_password_hash
 import db
 import config
+import chugs
 
 app = Flask(__name__)
 app.secret_key = config.secret_key
@@ -27,6 +28,8 @@ def create_chug():
     carbonation = "carbonation" in request.form
     user_id = session["user_id"]
 
+    
+
     #Getting the time as milliseconds
     minutes  = int(request.form.get("minutes",0))
     seconds  = int(request.form.get("seconds",0))
@@ -34,9 +37,8 @@ def create_chug():
 
     total_time = (minutes * 60 * 1000) + (seconds * 1000) + milliseconds
     
-    sql = """INSERT INTO chugs (drink, clock, amount, alcohol, carbonation, user_id)
-            VALUES (?, ?, ?, ?, ?, ?)"""
-    db.execute(sql, [drink, total_time, amount, alcohollevel, carbonation, user_id])
+    chugs.add_chug(drink, total_time, amount, alcohollevel, carbonation, user_id)
+
     return redirect("/")
 
 # Registering page
