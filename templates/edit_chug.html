@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Muokkaa kellotusta</title>
+</head>
+
+<body>
+    <h1>Muokkaa kellotusta</h1>
+  <form action="/update_chug" method="post">
+    <p>
+      Juoman nimi: <br />
+      <input type="text" name="drink" value = "{{ chug.drink }}" required/>
+    </p>
+    <p>
+    Aika: (nykyinen aika: {{ chug.clock }}ms) <br />
+    <input type="text" id="minutes" class="time-input" name="minutes" pattern="^[0-9]{1,2}$" size="6" required>min :
+    <input type="text" id="seconds" class="time-input" name="seconds" pattern="^[0-9]{1,2}$" size="6" required>s :
+    <input type="text" id="milliseconds" class="time-input" name="milliseconds" pattern="^[0-9]{1,3}$" size="6" required>ms
+    </p>
+    <p>
+    Määrä (cl) esim. tölkki 33: <br />
+    <input type="number" name="amount" step="0.1" size="5" value = "{{ chug.amount }}"  required/>cl
+    </p>
+    <p>
+    Alkoholipitoisuus (%) esim. 5,5: <br />
+    <input type="number" name="alcohollevel" step="0.1" size="5" value = "{{ chug.alcohol }}" required/>%
+    </p>
+    <p>
+    Hiilihappoja?: <br />
+    <input type="checkbox" name="carbonation" value = "{{ chug.carbonation }}" />
+    </p>
+    <input type="hidden" name ="chug_id" value="{{ chug.id }}"/>
+    <input type="submit" value="Päivitä kellotus" />
+  </form>
+</body>
+
+</html>
