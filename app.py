@@ -15,6 +15,11 @@ def index():
     all_chugs = chugs.get_chugs()
     return render_template("index.html", chugs=all_chugs)
 
+#searching fucntion
+@app.route("/find_chug")
+def find_chug():
+    return render_template("find_chug.html")
+
 #Chug info pages
 @app.route("/chug/<int:chug_id>")
 def show_chug(chug_id):
