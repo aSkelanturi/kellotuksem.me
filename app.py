@@ -1,6 +1,6 @@
 import sqlite3
 from flask import Flask
-from flask import redirect, render_template, request, session
+from flask import abort, redirect, render_template, request, session
 from werkzeug.security import generate_password_hash, check_password_hash
 import db
 import config
@@ -64,6 +64,8 @@ def create_chug():
 @app.route("/edit_chug/<int:chug_id>")
 def edit_chug(chug_id):
     chug = chugs.get_chug(chug_id)
+    if chug["user_id"] != session["user_id"]:
+        abort(403)
     return render_template("edit_chug.html", chug = chug)
 
 #update chug
@@ -90,8 +92,11 @@ def update_chug():
 #chug deleting page
 @app.route("/remove_chug/<int:chug_id>", methods=["GET", "POST"])
 def remove_chug(chug_id):
+    chug = chugs.get_chug(chug_id)
+    if chug["user_id"] != session["user_id"]:
+        abort(403)
+
     if request.method == "GET":
-        chug = chugs.get_chug(chug_id)
         return render_template("remove_chug.html", chug = chug)
     if request.method == "POST":
         if "remove" in request.form:
