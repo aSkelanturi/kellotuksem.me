@@ -12,17 +12,24 @@
   <p>
     Olet kirjautunut nimellä {{ session.username }} id numerosi on {{ session.user_id }}
   </p>
-  {% endif %}
-
   <p>
-    <a href="/login">Kirjaudu sisään </a>
-    <a href="/register">luotunnus </a>
     <a href="/logout">Kirjaudu ulos</a>
   </p>
-
-<p>
+  <p>
     <a href="/new_chug">Lisää kellottus</a>
-</p>
+  </p>
+  {% else %}
+  <p>
+    <a href="/login">Kirjaudu sisään </a>
+  </p>
+  <p>
+    <a href="/register">Luo tunnus </a>
+  </p>
+
+  {% endif %}
+
+
+
 <p>
     <a href="/find_chug">Etsi kellotusta</a>
 </p>

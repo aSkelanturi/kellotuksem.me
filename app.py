@@ -9,6 +9,11 @@ import chugs
 app = Flask(__name__)
 app.secret_key = config.secret_key
 
+#Check login
+def require_login():
+    if "user_id" not in session:
+        abort(403)
+
 #Front page
 @app.route("/")
 def index():
@@ -38,11 +43,14 @@ def show_chug(chug_id):
 #Chug adding form
 @app.route("/new_chug")
 def new_chug():
+    require_login()
     return render_template("new_chug.html")
 
 #Adding chugs
 @app.route("/create_chug", methods=["POST"])
 def create_chug():
+    require_login()
+
     drink = request.form["drink"]
     amount = request.form["amount"]
     alcohollevel = request.form["alcohollevel"]
@@ -65,6 +73,7 @@ def create_chug():
 #chug editing page
 @app.route("/edit_chug/<int:chug_id>")
 def edit_chug(chug_id):
+    require_login()
     chug = chugs.get_chug(chug_id)
     if not chug:
         abort(404)
@@ -75,6 +84,7 @@ def edit_chug(chug_id):
 #update chug
 @app.route("/update_chug", methods=["POST"])
 def update_chug():
+    require_login()
     chug_id = request.form["chug_id"]
     chug = chugs.get_chug(chug_id)
     if not chug:
@@ -94,13 +104,14 @@ def update_chug():
 
     total_time = (minutes * 60 * 1000) + (seconds * 1000) + milliseconds
     
-    chugs.update_chug(chug_id, drink, total_time, amount, alcohollevel, carbonation)
+    chugs.update_chug(chug_id, drink, total_time, amount, alcohollevel, carbonation, user_id)
 
     return redirect("/chug/" + str(chug_id))
 
 #chug deleting page
 @app.route("/remove_chug/<int:chug_id>", methods=["GET", "POST"])
 def remove_chug(chug_id):
+    require_login()
     chug = chugs.get_chug(chug_id)
     if not chug:
         abort(404)
@@ -166,6 +177,7 @@ def login():
 #Logut page
 @app.route("/logout")
 def logout():
-    del session["username"]
-    del session["user_id"]
+    if "user_id" in session:
+        del session["username"]
+        del session["user_id"]
     return redirect("/")
