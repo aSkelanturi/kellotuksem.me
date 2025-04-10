@@ -22,7 +22,8 @@ def get_chug(chug_id):
              FROM chugs
              JOIN users ON chugs.user_id = users.id
              WHERE chugs.id = ?"""
-    return db.query(sql, [chug_id])[0]
+    result = db.query(sql, [chug_id])
+    return result[0] if result else None
 
 def update_chug(chug_id, drink, total_time, amount, alcohollevel, carbonation):
     sql = """UPDATE chugs 

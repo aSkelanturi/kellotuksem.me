@@ -30,6 +30,8 @@ def find_chug():
 @app.route("/chug/<int:chug_id>")
 def show_chug(chug_id):
     chug = chugs.get_chug(chug_id)
+    if not chug:
+        abort(404)
     return render_template("show_chug.html", chug = chug)
 
 
@@ -64,6 +66,8 @@ def create_chug():
 @app.route("/edit_chug/<int:chug_id>")
 def edit_chug(chug_id):
     chug = chugs.get_chug(chug_id)
+    if not chug:
+        abort(404)
     if chug["user_id"] != session["user_id"]:
         abort(403)
     return render_template("edit_chug.html", chug = chug)
@@ -72,6 +76,11 @@ def edit_chug(chug_id):
 @app.route("/update_chug", methods=["POST"])
 def update_chug():
     chug_id = request.form["chug_id"]
+    chug = chugs.get_chug(chug_id)
+    if not chug:
+        abort(404)
+    if chug["user_id"] != session["user_id"]:
+        abort(403)
     drink = request.form["drink"]
     amount = request.form["amount"]
     alcohollevel = request.form["alcohollevel"]
@@ -93,6 +102,8 @@ def update_chug():
 @app.route("/remove_chug/<int:chug_id>", methods=["GET", "POST"])
 def remove_chug(chug_id):
     chug = chugs.get_chug(chug_id)
+    if not chug:
+        abort(404)
     if chug["user_id"] != session["user_id"]:
         abort(403)
 
