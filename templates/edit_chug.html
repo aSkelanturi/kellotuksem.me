@@ -10,7 +10,7 @@
   <form action="/update_chug" method="post">
     <p>
       Juoman nimi: <br />
-      <input type="text" name="drink" value = "{{ chug.drink }}" required/>
+      <input type="text" name="drink" value = "{{ chug.drink }}" required maxlength="50"/>
     </p>
     <p>
     Aika: (nykyinen aika: {{ chug.clock }}ms) <br />
@@ -20,11 +20,11 @@
     </p>
     <p>
     Määrä (cl) esim. tölkki 33: <br />
-    <input type="number" name="amount" step="0.1" size="5" value = "{{ chug.amount }}"  required/>cl
+    <input type="number" name="amount" step="0.1" size="5" value = "{{ chug.amount }}"  required maxlength="5"/>cl
     </p>
     <p>
     Alkoholipitoisuus (%) esim. 5,5: <br />
-    <input type="number" name="alcohollevel" step="0.1" size="5" value = "{{ chug.alcohol }}" required/>%
+    <input type="number" name="alcohollevel" step="0.1" size="5" value = "{{ chug.alcohol }}" required maxlength="5"/>%
     </p>
     <p>
     Hiilihappoja?: <br />

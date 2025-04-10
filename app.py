@@ -52,8 +52,14 @@ def create_chug():
     require_login()
 
     drink = request.form["drink"]
+    if len(drink) > 50:
+        abort(403)
     amount = request.form["amount"]
+    if len(amount) > 5:
+        abort(403)
     alcohollevel = request.form["alcohollevel"]
+    if len(alcohollevel) > 5:
+        abort(403)    
     carbonation = "carbonation" in request.form
     user_id = session["user_id"]
 
@@ -92,8 +98,14 @@ def update_chug():
     if chug["user_id"] != session["user_id"]:
         abort(403)
     drink = request.form["drink"]
+    if len(drink) > 50:
+        abort(403)    
     amount = request.form["amount"]
+    if len(drink) > 5:
+        abort(403)
     alcohollevel = request.form["alcohollevel"]
+    if len(drink) > 5:
+        abort(403)    
     carbonation = "carbonation" in request.form
     user_id = session["user_id"]
 
