@@ -31,6 +31,26 @@ Tietokannat ja web-ohjelmointi kurssin harjoitustyö
 
 * Käyttäjä pystyy etsimään kellotuksia hakusanalla tai muulla perusteella. Käyttäjä pystyy hakemaan sekä itse lisäämiään että muiden käyttäjien lisäämiä tietokohteita.
 
+## Sovelluksen asennus
+
+Asenna `flask`-kirjasto:
+
+```
+$ pip install flask
+```
+
+Luo tietokannan taulut ja lisää alkutiedot:
+
+```
+$ sqlite3 database.db < schema.sql
+$ sqlite3 database.db < init.sql
+```
+
+Voit käynnistää sovelluksen näin:
+
+```
+$ flask run
+```
 
 ## Mikä ihmeen kellotus?
 Kellotuksella tarkoitetaan juoman juomista yleensä mahdollisimman nopeasti samalla kun suorituksesta otetaan aikaa.
