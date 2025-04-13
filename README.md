@@ -31,6 +31,10 @@ Tietokannat ja web-ohjelmointi kurssin harjoitustyö
 
 * Käyttäjä pystyy etsimään kellotuksia hakusanalla tai muulla perusteella. Käyttäjä pystyy hakemaan sekä itse lisäämiään että muiden käyttäjien lisäämiä tietokohteita.
 
+* Käyttäjä pystyy valitsemaan kellotukselle yhden tai useamman luokittelun.(ei näy vielä käyttäjälle mitenkään)
+
+* Sovelluksessa on käyttäjäsivut, jotka näyttävät jokaisesta käyttäjästä tilastoja (kellotusten määrä ja kellotukset)
+
 ## Sovelluksen asennus
 
 Asenna `flask`-kirjasto:
