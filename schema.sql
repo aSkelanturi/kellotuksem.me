@@ -13,3 +13,9 @@ CREATE TABLE chugs (
     carbonation TEXT,
     user_id INTEGER REFERENCES users
 );
+
+CREATE TABLE feeling (
+    id INTEGER PRIMARY KEY,
+    chug_id INTEGER REFERENCES chugs,
+    value TEXT
+);

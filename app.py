@@ -81,8 +81,10 @@ def create_chug():
     milliseconds  = int(request.form.get("milliseconds",0))
 
     total_time = (minutes * 60 * 1000) + (seconds * 1000) + milliseconds
+
+    feeling = request.form["feeling"]
     
-    chugs.add_chug(drink, total_time, amount, alcohollevel, carbonation, user_id)
+    chugs.add_chug(drink, total_time, amount, alcohollevel, carbonation, user_id, feeling)
 
     return redirect("/")
 

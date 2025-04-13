@@ -1,9 +1,14 @@
 import db
 
-def add_chug(drink, total_time, amount, alcohollevel, carbonation, user_id):
+def add_chug(drink, total_time, amount, alcohollevel, carbonation, user_id, feeling):
     sql = """INSERT INTO chugs (drink, clock, amount, alcohol, carbonation, user_id)
             VALUES (?, ?, ?, ?, ?, ?)"""
     db.execute(sql, [drink, total_time, amount, alcohollevel, carbonation, user_id])
+
+    chug_id = db.last_insert_id()
+
+    sql = "INSERT INTO feeling (chug_id, value) VALUES (?, ?)"
+    db.execute(sql, [chug_id, feeling])
 
 def get_chugs():
     sql = """SELECT id, drink FROM chugs ORDER BY id DESC"""
