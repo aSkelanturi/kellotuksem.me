@@ -25,7 +25,7 @@ Tietokannat ja web-ohjelmointi kurssin harjoitustyö
 
 * Käyttäjä pystyy luomaan tunnuksen ja kirjautumaan sisään sovellukseen.
 
-* Käyttäjä pystyy lisäämään sovellukseen kellotuksia. Lisäksi käyttäjä pystyy muokkaamaan ja poistamaan lisäämiään kellotuksia.
+* Käyttäjä pystyy lisäämään sovellukseen kellotuksia. Lisäksi käyttäjä pystyy muokkaamaan (tässä vieläkin ongelma) ja poistamaan lisäämiään kellotuksia.
 
 * Käyttäjä näkee sovellukseen lisätyt kellotukset. Käyttäjä näkee sekä itse lisäämänsä että muiden käyttäjien lisäämät kellotukset.
 
