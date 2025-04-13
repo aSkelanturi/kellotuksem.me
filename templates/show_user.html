@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{{ user.username }}</title>
+</head>
+
+<body>
+    <h1>Kellottaja: {{ user.username }}<h1>
+    <p>
+    Käyttäjällä on yhteensä {{ chugs | count }} ilmoitusta.
+    </p>
+    <h3>Ilmoitukset</h3>
+    <ul>
+    {% for chug in chugs %}
+    <li><a href="/chug/{{ chug.id }}">{{ chug.drink }}</a></li>
+    {% endfor %}
+    <p>
+        <a href="/">Takaisin</a>
+    </p>
+</body>
+
+</html>
