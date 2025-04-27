@@ -128,7 +128,7 @@ def update_chug():
 
     total_time = (minutes * 60 * 1000) + (seconds * 1000) + milliseconds
     
-    chugs.update_chug(chug_id, drink, total_time, amount, alcohollevel, carbonation, user_id)
+    chugs.update_chug(chug_id, drink, total_time, amount, alcohollevel, carbonation)
 
     return redirect("/chug/" + str(chug_id))
 

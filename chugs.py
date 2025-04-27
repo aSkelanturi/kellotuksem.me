@@ -38,7 +38,7 @@ def update_chug(chug_id, drink, total_time, amount, alcohollevel, carbonation):
                  alcohol = ?, 
                  carbonation = ? 
              WHERE id = ?"""
-    db.execute(sql, [chug_id])
+    db.execute(sql, [drink, total_time, amount, alcohollevel, carbonation, chug_id])
 
 def remove_chug(chug_id):
     sql = "DELETE FROM chugs WHERE id = ?"
